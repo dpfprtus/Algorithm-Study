@@ -8,8 +8,7 @@ for _ in range(test):
     r_stack = []
     for i in a:
         if i == "-":
-            if l_stack:
-                l_stack.pop()
+            if l_stack:0
         elif i == "<":
             if l_stack:
                 r_stack.append(l_stack.pop())
