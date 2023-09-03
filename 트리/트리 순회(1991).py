@@ -22,7 +22,7 @@ for _ in range(n):
     a,b,c = input().split()
     tree[a] = [b,c]
     
-preorder("A")
+preorder("A")   
 print()
 middleorder("A")
 print()
