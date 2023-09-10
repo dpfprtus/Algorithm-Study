@@ -1,28 +1,26 @@
+from sys import setrecursionlimit
+setrecursionlimit(10 ** 9)
 n = int(input())
 tree = [[] for _ in range(n+1)]
 
 for _ in range(n-1):
     a,b,w = map(int,input().split())
     tree[a].append((b,w))
+    tree[b].append((a,w))
 
-def getmax(tree,root):
+a = [0]
+def dfs(node,we):
+    for node,w in tree[node]:
+        if distance[node] == -1:
+            distance[node] = we+w
+            dfs(node,we+w)
+            
+distance = [-1] * (n+1)
+distance[1] = 0
 
-    maxbranch = 0
-
-    node,w = root
-    branch = w + getmax(tree,node)
-    if branch > maxbranch:
-        maxbranch = branch
-    return maxbranch
-
-root = 1
-result = []
-print(tree[root][0])
-while len(tree[root]) != 0 and root < len(tree):
-
-    a = getmax(tree,tree[root][0])
-    b = getmax(tree,tree[root][1])
-    result.append(a+b)
-    root += 1
-
-print(max(result))
+result = dfs(1,0)
+start = distance.index(max(distance))
+distance = [-1] * (n+1)
+distance[start] = 0
+result2 = dfs(start,0)
+print(max(distance))
