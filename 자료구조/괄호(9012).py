@@ -1,29 +1,25 @@
-from sys import stdin
+#1회 다시품
+import sys
+input = sys.stdin.readline
+
+t = int(input())
 
 
-num = int(input())
-
-for i in range(0,num):
-
-    result = []
-    isVps = True
-    vps = stdin.readline().rstrip()
-
-    for j in vps:
-  
-        if(j == "("):
-            result.append(j)
-        if(j==")"):
-            if result:
-                result.pop() #()로 매칭되는거라 pop시킨다
-            elif not result:
-                isVps = False
+for _ in range(t):
+    stack = []
+    s = input()
+    flag = 0
+    for i in s:
+        if i == "(":
+            stack.append(i)
+        elif i == ")":
+            if stack:
+                stack.pop()
+            else:
+                print("NO")
+                flag = 1
                 break
-    if not result and isVps:
-        print("YES")
-    elif result or not isVps:
+    if stack:
         print("NO")
-    
-
-    
-      
+    elif not stack and flag == 0:
+        print("YES")
