@@ -1,3 +1,4 @@
+#다시품
 from itertools import combinations
 
 s = list(input())
