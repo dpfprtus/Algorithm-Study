@@ -1,19 +1,17 @@
 from collections import deque
 
 n = int(input())
-order = list(map(int,input().split()))
-dq = deque()
-order.reverse()
+a = list(map(int,input().split()))
+a.reverse()
+result = deque()
+
 for i in range(n):
-    if order[i] == 1:
-        dq.appendleft(i+1)
-    elif order[i] == 2:
-        a = dq.popleft()
-        dq.appendleft(i+1)
-        dq.appendleft(a)
-    elif order[i] == 3:
-        dq.append(i+1)
-
-
-            
-print(' '.join(map(str,dq)))
+    if a[i] == 1:
+        result.appendleft(i+1)
+    elif a[i] == 2:
+        b = result.popleft()
+        result.appendleft(i+1)
+        result.appendleft(b)
+    else:
+        result.append(i+1)
+print(' '.join(map(str,result)))
