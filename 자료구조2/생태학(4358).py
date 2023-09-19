@@ -1,18 +1,19 @@
-from sys import stdin
+import sys
 from collections import defaultdict
-result = defaultdict(int)
+input = sys.stdin.readline
+tree = defaultdict(int)
 cnt = 0
 while True:
     try:
-        a = stdin.readline().rstrip()
-        if not a:
+        s = input().rstrip()
+        if not s:
             break
-        result[a] += 1
-        cnt+=1
+        tree[s] +=1 
+        cnt += 1
+
     except:
         break
-result =sorted(result.items())
-
-for a,b in result:
+tree = sorted(tree.items())
+for a,b in tree:
     print("%s %.4f" % (a,round(b/cnt*100,4)))
-#round(0.5),rount(-0.5)는 모두 0이다 따라서 f를 써야한다.
+
