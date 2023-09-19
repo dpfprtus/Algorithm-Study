@@ -1,17 +1,18 @@
-from sys import stdin
-import heapq
-n = int(input())
-heap = []
-flag = 0
-for _ in range(n):
-    a = list(map(int,(stdin.readline().rstrip().split())))
+import sys,heapq
+input = sys.stdin.readline
 
-    for i in a:
+n = int(input())
+a = []
+heap = []
+
+for i in range(n):
+    a = map(int,input().split())
+    for j in a:
         if len(heap) < n:
-            heapq.heappush(heap,i)
+            heapq.heappush(heap,j)
         else:
-            if heap[0] < i:
+            if heap[0] < j:
                 heapq.heappop(heap)
-                heapq.heappush(heap,i)
-    print(heap)
+                heapq.heappush(heap,j)
+
 print(heap[0])

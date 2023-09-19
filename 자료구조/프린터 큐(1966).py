@@ -1,27 +1,21 @@
 from collections import deque
-num = int(input())
 
-for _ in range(num):
-    a,b = map(int,input().split())
-    prior = deque(map(int,input().split()))    
+t = int(input())
+
+for _ in range(t):
+    n,m = map(int,input().split())
+    prior = deque((enumerate(map(int,input().split()))))
     cnt = 0
-    while(prior):
-        
-        prior_max = max(prior)
-        first = prior.popleft()
-        b -= 1 #찾고자 하는 요소 위치
-        if first == prior_max:
+    a = 101
+
+    while a != m:
+        max_prior = max(prior,key = lambda x:x[1])
+        if prior[0][1] == max_prior[1]:
+            a = prior.popleft()[0]
             cnt += 1
-            if b < 0:
-                print(cnt)
-                break
         else:
-            prior.append(first)
-            if b < 0:
-                b = len(prior) - 1
-        
-        
+            tmp = prior.popleft()
+            prior.append(tmp)            
+    print(cnt)
     
-    
-
-
+        

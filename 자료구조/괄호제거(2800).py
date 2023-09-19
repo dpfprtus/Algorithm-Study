@@ -1,25 +1,25 @@
+#다시품
 from itertools import combinations
 
-data = list(input())
-index = []
+s = list(input())
 stack = []
-result = set()
-for i in range(len(data)):
-    if data[i] == "(":
+index = []
+
+for i in range(len(s)):
+    if s[i] == "(":
         stack.append(i)
-    elif data[i] == ")":
+    elif s[i] == ")":
         index.append((stack.pop(),i))
+result = set()  
 for i in range(1,len(index)+1):
-    com = list(combinations(index,i))
-    for c in com:
-        temp = data[:]
-        for x,y in c:
-            temp[x]= ''
-            temp[y]= ''
+    a = list(combinations(index,i))
+    for b in a:
+        temp = s[:]
+        for c,d in b:  
+            temp[c] = ''
+            temp[d] = ''
         result.add(''.join(temp))
-
 result = list(result)
-
 result.sort()
 for i in result:
     print(i)

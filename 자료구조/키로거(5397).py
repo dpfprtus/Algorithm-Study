@@ -1,21 +1,25 @@
-from sys import stdin
+import sys
+from collections import deque
+input = sys.stdin.readline
 
-test = int(input())
+t = int(input())
 
-for _ in range(test):
-    a = stdin.readline().rstrip()
-    l_stack = []
-    r_stack = []
-    for i in a:
-        if i == "-":
-            if l_stack:0
-        elif i == "<":
-            if l_stack:
-                r_stack.append(l_stack.pop())
+for _ in range(t):
+    s = input().rstrip()
+    left = []
+    right = []
+    for i in s:
+        if i == "<":
+            if left:
+                right.append(left.pop())
         elif i == ">":
-            if r_stack:
-                l_stack.append(r_stack.pop())
+            if right:
+                left.append(right.pop())
+        elif i == "-":
+            if left:
+                left.pop()
         else:
-            l_stack.append(i)
-    l_stack.extend(reversed(r_stack))
-    print(''.join(l_stack))
+            left.append(i)
+    right.reverse()
+    left.extend(right)
+    print(''.join(left))
