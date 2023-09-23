@@ -1,15 +1,18 @@
-k = int(input())
-order = input().split()
-tree = [[] for _ in range(k)]
+import sys
+input = sys.stdin.readline
 
-def make(order,x):
-    mid = len(order) // 2
-    tree[x].append(order[mid])
-    if len(order) == 1:
-        return 
-    make(order[:mid],x+1)
-    make(order[mid+1:],x+1)
+k = int(input())
+order = list(map(int,input().split()))
+tree = [[] for _ in range(len(order))]
+def search(order,x):
     
-make(order,0)
-for i in range(k):
-    print(*tree[i])
+    root = len(order) // 2
+    tree[x].append(order[root])
+    if len(order) == 1: return
+    search(order[:root],x+1)
+    search(order[root+1:],x+1)
+    
+search(order,0)
+for i in tree:
+    if i:
+        print(*i)
