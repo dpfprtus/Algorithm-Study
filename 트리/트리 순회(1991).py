@@ -1,29 +1,37 @@
-n = int(input())
-tree = {}
+from collections import defaultdict
 
-def preorder(root):
-    if root != ".":
-        print(root,end= '')
-        preorder(tree[root][0])
-        preorder(tree[root][1])
+def preOrder(node):
+    b,c = tree[node]
+
+    print(node,end='')
+    if b != ".":
+        preOrder(b)
+    if c != ".":
+        preOrder(c)
         
-def middleorder(root):
-    if root != ".":
-        middleorder(tree[root][0])
-        print(root,end='')
-        middleorder(tree[root][1])
-def postorder(root):
-    if root != ".":
-        postorder(tree[root][0])
-        postorder(tree[root][1])
-        print(root, end='')
+def inOrder(node):
+    b,c = tree[node]
+    if b!= ".":
+        inOrder(b)
+    print(node,end='')
+    if c!= ".":
+        inOrder(c)
 
-for _ in range(n):
+def postOrder(node):
+    b,c = tree[node]
+    if b!= ".":
+        postOrder(b)
+    if c!= ".":
+        postOrder(c)
+    print(node,end='')
+
+n = int(input())
+tree = defaultdict(str)
+for i in range(n):
     a,b,c = input().split()
-    tree[a] = [b,c]
-    
-preorder("A")   
+    tree[a] = (b,c)
+preOrder('A')
 print()
-middleorder("A")
+inOrder('A')
 print()
-postorder("A")
+postOrder('A')
