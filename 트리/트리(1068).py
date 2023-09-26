@@ -1,16 +1,16 @@
 n = int(input())
 parent = list(map(int,input().split()))
 erase = int(input())
-cnt = 0
+
 def dfs(root):
     parent[root] = -2
-    for i in range(n):
+    for i in range(len(parent)):
         if parent[i] == root:
             dfs(i)
-dfs(erase)
-for i in range(n):
-    if parent[i] != -2 and i not in parent:
-            cnt += 1
-          
 
-print(cnt)
+dfs(erase)
+count = 0
+for i in range(len(parent)):
+    if parent[i] != -2 and i not in parent:
+        count += 1
+print(count)
