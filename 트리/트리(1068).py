@@ -1,16 +1,19 @@
+from sys import setrecursionlimit
+setrecursionlimit(10**9)
+
 n = int(input())
 parent = list(map(int,input().split()))
-erase = int(input())
-cnt = 0
-def dfs(root):
-    parent[root] = -2
-    for i in range(n):
-        if parent[i] == root:
-            dfs(i)
-dfs(erase)
-for i in range(n):
-    if parent[i] != -2 and i not in parent:
-            cnt += 1
-          
+remove_node = int(input())
+tree = [[] for _ in range(n+1)]
 
-print(cnt)
+def delNode(node):
+    for i in tree[node]:
+        delNode(i)
+        tree[i] = 0
+
+for i in range(1,n):
+    tree[parent[i]].append(i)
+    tree[i].append(parent[i])
+print(tree)
+delNode(remove_node)
+tree[remove_node] = 0
