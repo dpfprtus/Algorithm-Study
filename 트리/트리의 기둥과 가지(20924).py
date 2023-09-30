@@ -1,38 +1,34 @@
-from sys import stdin,setrecursionlimit
+from sys import setrecursionlimit,stdin
 from collections import defaultdict
 setrecursionlimit(10**9)
-
 input = stdin.readline
-
-def get_maxbranch(tree,root):
-    if root not in tree: return 0
-
-    maxbranch = 0
-    for node,w in tree[root].items():
-        del tree[node][root]
-        branch = w + get_maxbranch(tree,node)
-        if branch > maxbranch:
-            maxbranch=branch
-    return maxbranch
+        
+def findMaxLength(tree,node):
+    if node not in tree:return
+    max_length = 0
+    for b,d in tree[node].items():
+        del tree[b][node]
+        length = findMaxLength(tree,b)+d
+        if length > max_length:
+            max_length = length
+    return max_length
 
 n,r = map(int,input().split())
 tree = defaultdict(dict)
-for i in range(n-1):
+
+for _ in range(n-1):
     a,b,d = map(int,input().split())
     tree[a][b] = d
     tree[b][a] = d
-
-giganode = r
-gigalen = 0
-
-while len(tree[giganode]) == 1:
-    node,w = list(tree[giganode].items())[0]
-    del tree[node][giganode]
-    gigalen += w
-    giganode = node
-
-maxbranch = get_maxbranch(tree,giganode)
-
-print("{} {}".format(gigalen,maxbranch))
     
+giga_length = 0
+giga = r
+while (len(tree[giga]) == 1):
+    node,w = list(tree[giga].items())[0]
+    del tree[node][giga]
+    giga_length += w
+    giga = node
+maxbranch = findMaxLength(tree,giga)
+print("{} {}".format(giga_length,maxbranch))
+
     
