@@ -1,23 +1,22 @@
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10**5)
+sys.setrecursionlimit(10**9)
 
 n = int(input())
-inorder = list(map(int,input().split())) #중위
-postorder = list(map(int,input().split())) #후위
 
-nodeNum = [0] *(n+1)
+inorder = list(map(int,input().split()))
+postorder = list(map(int,input().split()))
+nodeNum = [0] * (n+1)
 for i in range(n):
     nodeNum[inorder[i]] = i
 
-def preorder(inStart,inEnd,postStart,postEnd):
-    if inStart>inEnd or postStart > postEnd:return
-    root = postorder[postEnd]
-    leftNode=nodeNum[root] - inStart
-    rightNode=inEnd-nodeNum[root]
+def makePreorder(instart,inend,poststart,postend):
+    if instart > inend or poststart > postend: return
+    root = postorder[postend]
+    leftnode = nodeNum[root] - instart
+    rightnode = inend - nodeNum[root]
+    print(root,end= " ")
+    makePreorder(instart,instart+leftnode-1,poststart,poststart+leftnode-1)
+    makePreorder(inend-rightnode+1,inend,postend-rightnode,postend-1)
 
-    print(root,end=" ")
-    preorder(inStart,inStart+leftNode-1,postStart,postStart+leftNode-1)
-    preorder(inEnd-rightNode+1,inEnd,postEnd-rightNode,postEnd-1)
-
-preorder(0,n-1,0,n-1)
+makePreorder(0,n-1,0,n-1)
