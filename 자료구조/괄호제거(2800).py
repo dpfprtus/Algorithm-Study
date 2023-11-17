@@ -1,25 +1,21 @@
-#다시품
 from itertools import combinations
-
 s = list(input())
-stack = []
-index = []
-
+idx = []
+idx2 = []
 for i in range(len(s)):
     if s[i] == "(":
-        stack.append(i)
+        idx.append(i)
     elif s[i] == ")":
-        index.append((stack.pop(),i))
-result = set()  
-for i in range(1,len(index)+1):
-    a = list(combinations(index,i))
-    for b in a:
-        temp = s[:]
-        for c,d in b:  
-            temp[c] = ''
-            temp[d] = ''
-        result.add(''.join(temp))
-result = list(result)
-result.sort()
-for i in result:
-    print(i)
+        idx2.append(i)
+idx3 =[]
+idx2.reverse()
+for i in range(len(idx)):
+    idx3.append((idx[i],idx2[i]))
+idx3.reverse()
+print(idx3)
+for a,b in idx3:
+    print(a,b)
+    c = s
+    c.remove(a)
+    c.remove
+    print(''.join(c))

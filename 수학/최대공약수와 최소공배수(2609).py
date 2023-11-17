@@ -3,7 +3,7 @@ a,b = map(int,input().split())
 def gcd(a,b):
     if a > b:
         while(b > 0):
-            a ,b= b, a%b
+            a ,b = b, a%b
         return a
     else:
         while(a > 0):

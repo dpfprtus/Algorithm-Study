@@ -8,9 +8,6 @@ for _ in range(n-1):
     tree[a].append(b)
     tree[b].append(a)
 
-
-
-
 q = int(input())
 for i in range(q):
     t,k = map(int,input().split())

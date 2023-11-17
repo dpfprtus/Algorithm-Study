@@ -10,7 +10,7 @@ for i in range(len(s)):
         stack.append(s[i])
         tmp *= 2
     elif s[i] == ")":
-        if not stack and stack[-1] == "[":
+        if not stack or stack[-1] == "[":
             result = 0
             break
         else:
@@ -22,7 +22,7 @@ for i in range(len(s)):
         stack.append(s[i])
         tmp *= 3
     elif s[i] == "]":
-        if not stack and stack[-1] == "(":
+        if not stack or stack[-1] == "(":
             result = 0
             break
         else:
