@@ -11,11 +11,11 @@ box = [c]*(n+1)
 _min = 0
 for s,e,b in boxs:
     _min = c
-    for i in range(e,b):
+    for i in range(s,e):
         _min = min(_min,box[i])
     _min = min(_min,b)
 
-    for i in range(e,b):
+    for i in range(s,e):
         box[i] -= _min
     result += _min
 print(result)

@@ -1,19 +1,18 @@
+import sys
 from copy import deepcopy
+input = sys.stdin.readline
 
 n = int(input())
 honey = list(map(int,input().split()))
-sum_honey = deepcopy(honey)
+honey_two = deepcopy(honey)
+for i in range(1,n):
+    honey_two[i] += honey_two[i-1]
 result = 0
 
-for i in range(1,n):
-    sum_honey[i] += sum_honey[i-1]
-
 for i in range(1,n-1):
-    result = max(result,2*sum_honey[-1]-honey[0]-honey[i]-sum_honey[i])
-
+    result = max(result,honey_two[-1]*2-honey_two[i]-honey[i]-honey[0])
 for i in range(1,n-1):
-    result = max(result,sum_honey[-1]-honey[-1]+sum_honey[i-1]-honey[i])
-
+    result = max(result,honey_two[i-1]+honey_two[-1]-honey[i]-honey[-1])
 for i in range(1,n-1):
-    result = max(result,sum_honey[i]-honey[0]+sum_honey[-1]-sum_honey[i-1]-honey[-1])
+    result = max(result,honey_two[-1]-honey_two[i-1]+honey_two[i]-honey[0]-honey[-1])
 print(result)
