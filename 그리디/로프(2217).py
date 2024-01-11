@@ -1,11 +1,10 @@
-import sys
-input = sys.stdin.readline
 n = int(input())
-lope = [int(input()) for _ in range(n)]
+weight = [int(input()) for _ in range(n)]
 result = []
-lope.sort()
 
-for x in lope:
-    result.append(x*n)
+weight.sort()
+for i in range(n):
+    result.append(weight[i]*n)
     n -= 1
 print(max(result))
+
