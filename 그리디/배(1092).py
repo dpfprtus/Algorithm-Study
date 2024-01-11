@@ -2,26 +2,22 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-crain_kg = list(map(int,input().split()))
-box = int(input())
-box_kg = list(map(int,input().split()))
+crain = list(map(int,input().split()))
+m = int(input())
+boxs = list(map(int,input().split()))
+crain.sort(reverse=True)
+boxs.sort(reverse=True)
 time = 0
-
-crain_kg.sort(reverse=True)
-box_kg.sort(reverse=True)
-
-if crain_kg[0] < box_kg[0]:
+if crain[0] < boxs[0]:
     print(-1)
 else:
-    while box_kg:
-        if not box_kg:
+    while boxs:
+        if not boxs:
             break
-        for crain in crain_kg:
-            for box in box_kg:
-                if crain >= box:
-                    box_kg.remove(box)
+        for i in crain:
+            for box in boxs:
+                if i >= box:
+                    boxs.remove(box)
                     break
         time += 1
     print(time)
-
-
