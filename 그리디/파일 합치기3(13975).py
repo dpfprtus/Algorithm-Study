@@ -1,17 +1,16 @@
-import sys,heapq
+import sys, heapq
 input = sys.stdin.readline
 
-for _ in range(int(input())):
+for _  in range(int(input())):
     k = int(input())
-    size = list(map(int,input().split()))
-    heapq.heapify(size)
+    file = list(map(int,input().split()))
+    heapq.heapify(file)
     result = 0
-    while len(size)>1:
-        a = heapq.heappop(size)
-        b =  heapq.heappop(size)
+    while len(file)>1:
+        a = heapq.heappop(file)
+        b = heapq.heappop(file)
         result += a+b
-        heapq.heappush(size,a+b)
+     
+        heapq.heappush(file,a+b)
+   
     print(result)
-        
- 
-        
