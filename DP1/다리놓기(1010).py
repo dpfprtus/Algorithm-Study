@@ -1,4 +1,7 @@
-dp = [[0] * 30 for _ in range(30)]
+
+import sys
+input = sys.stdin.readline
+dp = [[0]*30 for _ in range(30)]
 for i in range(30):
     for j in range(30):
         if i == 1:
@@ -6,11 +9,9 @@ for i in range(30):
         else:
             if i == j:
                 dp[i][j] = 1
-            elif i < j:
+            else:
                 dp[i][j] = dp[i-1][j-1] + dp[i][j-1]
-
-
 for _ in range(int(input())):
     n,m = map(int,input().split())
-
     print(dp[n][m])
+   
