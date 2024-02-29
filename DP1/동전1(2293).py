@@ -1,10 +1,10 @@
 n,k = map(int,input().split())
-
 values = [int(input()) for _ in range(n)]
+values.sort()
 dp = [0]*(k+1)
 dp[0] = 1
-for i in values:
-    for j in range(i,k+1):
-        if j-i >= 0:
-            dp[j] += dp[j-i]
+
+for value in values:
+    for i in range(value,k+1):
+        dp[i] += dp[i-value]
 print(dp[k])
