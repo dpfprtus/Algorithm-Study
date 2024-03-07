@@ -17,5 +17,4 @@ for i in range(n):
             dp[i+s[i][j]][j] += dp[i][j]
         if dp[i][j] != 0 and j + s[i][j]< n:
             dp[i][j+s[i][j]] += dp[i][j]
-print(dp)
-print(dp[n-1][n-1])
+
