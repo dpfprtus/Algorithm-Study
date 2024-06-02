@@ -9,6 +9,5 @@ def func(a,b,c):
     print(a,b)
     func(6-a-b,b,c-1)
 
-cnt = 0
 print(2**n-1)
 func(1,3,n)
