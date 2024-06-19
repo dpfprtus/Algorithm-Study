@@ -18,10 +18,7 @@ for _ in range(k):
 
 #최종 톱니바퀴 점수 계산
 def cal():
-    result = 0
-    for i in range(4):
-        result += chain[i][0]*(2**i) 
-    return result
+    return sum(chain[i][0] * (2**i) for i in range(4))
 
 #개별 톱니바퀴 회전
 
