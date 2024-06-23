@@ -3,8 +3,6 @@ stair = [0]+[int(input()) for _ in range(n)]
 
 dp = [0]*301
 
-
-
 if n == 1:
     print(stair[1])
 elif n == 2:
