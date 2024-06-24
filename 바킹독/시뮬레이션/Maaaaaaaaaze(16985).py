@@ -4,6 +4,8 @@ from copy import deepcopy
 
 input = sys.stdin.readline
 
+#대각선에서 한 대각선까지 가는 최소거리가 12이기 때문에 12가 나오면 탐색 종료
+
 maps = [[list(map(int,input().split())) for _ in range(5)] for _ in range(5)]
 
 #회전
