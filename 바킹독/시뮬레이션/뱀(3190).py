@@ -42,7 +42,7 @@ while True:
 
     if maps[x][y] != 'apple':
         snake.popleft()
-    #사과를 무한으로 먹이고 있었다...
+    #사과를 무한으로 먹이고 있었다...문제를 좀 더 꼼꼼히 읽자.
     else:
         maps[x][y] = 0
     
