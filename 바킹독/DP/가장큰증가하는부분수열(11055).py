@@ -9,4 +9,5 @@ for i in range(1,n):
             dp[i] = max(dp[i],dp[j]+nums[i])
         else:
             dp[i] = max(dp[i],nums[i])
+print(dp)
 print(max(dp))
